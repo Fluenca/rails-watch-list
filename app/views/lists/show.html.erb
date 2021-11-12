@@ -1,4 +1,29 @@
-<%= @list.name %>
-<%= @list.movies %>
+<h1><%= @list.name %></h1>
+<br>
+<br>
 
+<% @list.bookmarks.each do |bookmark|%>
+<% movie = Movie.find(bookmark.movie_id) %>
+<h3>Comment:</h3>
+<%= bookmark.comment %>
+<br>
+<h3>Title:</h3>
+<br>
+<%= movie.title %>
+<br>
+<%= image_tag "https://image.tmdb.org/t/p/original/#{movie.poster_url}", alt: "#{movie.title} poster", width: 200 %>
+<br>
+<br>
+<%= link_to "Delete Bookmark", bookmark_path(bookmark), method: :delete,
+            data: { confirm: "Are you sure?" }  %>
+<% end %>
+
+
+<br>
+<br>
+<%= link_to "Create New Bookmark", new_list_bookmark_path(@list)  %>
+<br>
 <%= link_to "Go back", lists_path %>
+<br>
+<%= link_to "Delete List", list_path(@list), method: :delete,
+            data: { confirm: "Are you sure?" }  %>

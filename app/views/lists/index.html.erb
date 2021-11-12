@@ -1,8 +1,12 @@
-<h1>Lists</h1>
-<ul>
-<% @lists.each do |list| %>
-<li><%= link_to list.name, list_path(list) %></li>
-<% end %>
-</ul>
+<div class="header"><h1>Your movie lists</h1></div>
 
-<%= link_to 'Make new list',  new_list_path%>
+<div class="body"></div>
+
+  <div class="container">
+      <% @lists.each do |list| %>
+        <div class="card"><%= link_to list.name, list_path(list) %></div>
+      <% end  %>
+  </div>
+
+<div><%= link_to 'Make new list',  new_list_path%></div>
+</div>

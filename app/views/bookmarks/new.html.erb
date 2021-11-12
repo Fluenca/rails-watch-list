@@ -1,4 +1,12 @@
 <h1>New Bookmark</h1>
+<%= simple_form_for [@list, @bookmark] do |f| %>
+  <%= f.input :comment %>
+  <%= f.association :movie, collection: Movie.all %>
+  <%= f.submit %>
+<% end %>
+
+
+
 
 <!-- simple form collection to retrieve the list id and movie id and send  it to the params to create a new bookmark >
 simple form for bookmark movie list do
